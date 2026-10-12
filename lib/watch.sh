@@ -745,7 +745,7 @@ term_off() { printf '\e[?1006l\e[?1000l\e[?25h\e[?1049l'; [ -z "${W_STTY:-}" ] |
 draw() {
   local w h i line out=""
   w=$(tput cols 2>/dev/null || echo 80); h=$(tput lines 2>/dev/null || echo 24)
-  [ "$w" -ge 44 ] || w=44; [ "$w" -le 100 ] || w=100   # one column reads best up to 100
+  [ "$w" -ge 44 ] || w=44
   [ "$w:$h" = "${W_SIZE:-}" ] || { W_SIZE="$w:$h"; W_FULL=1; W_PREV=(); printf '\e[2J'; }
   watch_frame "$w" "$h"
   local rows=("${FRAME[@]}")
